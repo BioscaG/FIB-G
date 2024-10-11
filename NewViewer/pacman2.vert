@@ -10,15 +10,11 @@ out vec2 vtexCoord;
 
 uniform mat4 modelViewProjectionMatrix;
 uniform mat3 normalMatrix;
-uniform float time;
 
 void main()
 {
     vec3 N = normalize(normalMatrix * normal);
     frontColor = vec4(color,1.0) * N.z;
-    int timeaux = int(mod(time/(1/2), 48));
-    float x = timeaux%8;
-    float y = timeaux%6;
     vtexCoord = texCoord;
     gl_Position = modelViewProjectionMatrix * vec4(vertex, 1.0);
 }
